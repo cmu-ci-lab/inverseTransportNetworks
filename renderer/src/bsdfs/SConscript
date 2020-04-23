@@ -1,0 +1,19 @@
+Import('env', 'plugins')
+
+# Basic library of smooth and rough materials
+plugins += env.SharedLibrary('diffuse', ['diffuse.cpp'])
+plugins += env.SharedLibrary('homogeneousdiffuse', ['homogeneousDiffuse.cpp'])
+plugins += env.SharedLibrary('homogeneousroughconductor', ['homogeneousRoughConductor.cpp'])
+plugins += env.SharedLibrary('homogeneousRoughDielectric', ['homogeneousRoughDielectric.cpp'])
+
+
+# Materials that act as modifiers
+plugins += env.SharedLibrary('mixturebsdfAD', ['mixturebsdfAD.cpp'])
+plugins += env.SharedLibrary('blendbsdfAD', ['blendbsdfAD.cpp'])
+
+
+# Other materials
+
+plugins += env.SharedLibrary('null', ['null.cpp'])
+
+Export('plugins')

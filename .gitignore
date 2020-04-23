@@ -1,0 +1,53 @@
+# Documentation
+renderer/doc/apidocs/*
+renderer/doc/*.aux
+renderer/doc/*.log
+renderer/doc/*.out
+renderer/doc/*.toc
+renderer/doc/*.bbl
+renderer/doc/*.blg
+renderer/doc/main.pdf
+renderer/doc/plugins_generated.tex
+
+# Build-related
+renderer/.sconf_temp
+renderer/build/release
+renderer/build/debug
+renderer/debian
+renderer/.sconsign.dblite
+renderer/config.py
+renderer/config.log
+renderer/*.pyc
+
+# MSVC++-related
+renderer/build/mitsuba-msvc2010.sdf
+renderer/build/mitsuba-msvc2010.suo
+renderer/build/mitsuba-msvc2010.vcxproj.user
+renderer/data/windows/mitsuba_res.res
+renderer/dist
+
+# Debugging history files
+renderer/\.gdb_history
+
+# Dependencies
+renderer/dependencies
+
+# OSX binaries and byproducts
+renderer/Mitsuba.app
+renderer/.DS_Store
+renderer/.vscode
+# Imported geometry and some default output types
+renderer/meshes
+renderer/textures
+renderer/mitsuba.*.log
+renderer/*.exr
+
+# Eclipse CDT project files
+renderer/.externalToolBuilders
+renderer/.settings
+renderer/.cproject
+renderer/.project
+renderer/.metadata/
+
+*.DS_Store
+
