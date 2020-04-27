@@ -45,9 +45,7 @@ const Integrator *Integrator::getSubIntegrator(int idx) const { return NULL; }
 
 SamplingIntegrator::SamplingIntegrator(const Properties &props)
  : Integrator(props) {
-	sigmaT_mie = props.m_sigmaT_mie;
-	albedo_mie = props.m_albedo_mie;
-	weights_mie = props.m_weights_mie;
+
 	m_theta_integrator = props.m_theta;
 	m_theta_integrator_FloatAD = props.m_theta_FloatAD;
 	m_id_AD_integrator_Spectrum_AD = props.id_AD_Spectrum_AD;
@@ -190,8 +188,9 @@ void SamplingIntegrator::renderBlock(const Scene *scene,
 			sensorRay.scaleDifferential(diffScaleFactor);
 			
 			std::vector<Float> specVec = std::vector<Float>(nDerivatives + 1);
-			
+
 			Spectrum_AD specNew = Li(sensorRay, rRec);
+
 			specVec[0] = spec[0];
 			for (int num = 1; num < nDerivatives + 1; num++) {
 				specVec[num] = 1.0f;
@@ -199,39 +198,11 @@ void SamplingIntegrator::renderBlock(const Scene *scene,
 			specVec[0] *= specNew[0].val();
 			stan::math::set_zero_all_adjoints();
 			specNew[0].grad();
-			std::vector<Float> dI_dst_a;
-			dI_dst_a.clear();
 			for (int i_theta = 0; i_theta < m_theta_integrator.size(); i_theta++) {
-				dI_dst_a.push_back(m_theta_integrator[i_theta].adj());
 				specVec[i_theta + 1] *= m_theta_integrator[i_theta].adj();
 			}
-			
-			std::vector<Float> dI_dwmix;
-			dI_dwmix.clear();
 			for (int i_theta_FloatAD = 0; i_theta_FloatAD < m_theta_integrator_FloatAD.size(); i_theta_FloatAD++) {
-
-				// dI_dst = dI_dst_a[0];
-				// dI_da  = dI_dst_a[1];
-				dI_dwmix.push_back(m_theta_integrator_FloatAD[i_theta_FloatAD].adj());
-
-				//specVec[i_theta_FloatAD + 1 + m_theta_integrator.size()] *= m_theta_integrator_FloatAD[i_theta_FloatAD].adj();
-			}
-			for (int i_theta_FloatAD = 0; i_theta_FloatAD < m_theta_integrator_FloatAD.size(); i_theta_FloatAD++) {
-
-				Float dI_dst = dI_dst_a[0];
-				Float dI_da  = dI_dst_a[1];
-				Float dst_dw = sigmaT_mie[i_theta_FloatAD];
-				Float da_dw  = albedo_mie[i_theta_FloatAD];
-
-				Float dI_dst_dw = dI_dst * dst_dw;
-				Float dI_da_dw  = dI_da * da_dw;
-
-				Float dI_dwmix_dw = 0.0;
-				for (int i_wmix = 0; i_wmix < m_theta_integrator_FloatAD.size(); i_wmix++) {
-					dI_dwmix_dw += dI_dwmix[i_wmix] * weights_mie[i_wmix][i_theta_FloatAD];
-				}
-				Float dI_dw = dI_dst_dw + dI_da_dw + dI_dwmix_dw;
-				specVec[i_theta_FloatAD + 1 + m_theta_integrator.size()] *= dI_dw;
+				specVec[i_theta_FloatAD + 1 + m_theta_integrator.size()] *= m_theta_integrator_FloatAD[i_theta_FloatAD].adj();
 			}
 
 

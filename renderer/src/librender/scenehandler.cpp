@@ -876,9 +876,6 @@ void SceneHandler::endElement(const XMLCh* const xmlName) {
 						props.id_AD_FloatAD = temp_id_AD_FloatAD;
 						props.m_theta_TextureAD = temp_TextureAD;	
 						props.id_AD_TextureAD = temp_id_TextureAD;
-						props.m_sigmaT_mie = temp_m_sigmaT_mie;
-						props.m_albedo_mie = temp_m_albedo_mie;	
-						props.m_weights_mie = temp_m_weights_mie;	
 						object = m_pluginManager->createObject(tag.second, props);
 					} catch (const std::exception &ex) {
 						XMLLog(EError, "Error while creating object: %s", ex.what());

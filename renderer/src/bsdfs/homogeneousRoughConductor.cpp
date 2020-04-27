@@ -63,7 +63,7 @@ public:
 
 		//m_sampleVisible = props.getBoolean("sampleVisible", true);
 
-		int idx;
+		int idx = 0;
 		for (int i = 0; i < props.id_AD_Spectrum_AD.size(); i++) {
 			if (props.id_AD_Spectrum_AD[i] == "alpha") {
 				idx = i;

@@ -15,7 +15,6 @@ renderer/build/release
 renderer/build/debug
 renderer/debian
 renderer/.sconsign.dblite
-renderer/config.py
 renderer/config.log
 renderer/*.pyc
 

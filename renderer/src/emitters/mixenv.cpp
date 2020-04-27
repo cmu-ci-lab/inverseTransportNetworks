@@ -119,6 +119,7 @@ public:
 		return false;
 	}
 	Spectrum eval(const Intersection &its, const Vector &d) const {
+
 		Spectrum result;
 		const Intersection temp_its = its;  
 		const Vector temp_d = d;  

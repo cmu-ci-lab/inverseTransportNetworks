@@ -132,6 +132,7 @@ public:
 
 		Spectrum_AD throughput(1.0f);
 		Float eta = 1.0f;
+
 		while (rRec.depth <= m_maxDepth || m_maxDepth < 0) {
 			// No intersection found, linear combination
 			if (!its.isValid()) {
@@ -144,7 +145,7 @@ public:
 					
 				break;
 			}
-			
+
 			const BSDF *bsdf = its.getBSDF(ray);
 			
 			/* Possibly include emitted radiance if requested */
@@ -173,7 +174,6 @@ public:
 
 			/* Estimate the direct illumination if this is requested */
 			DirectSamplingRecord dRec(its);	
-			
 			if (rRec.type & RadianceQueryRecord::EDirectSurfaceRadiance &&
 				(bsdf->getType() & BSDF::ESmooth)) {
 				Spectrum_AD value = scene->sampleEmitterDirect(dRec, rRec.nextSample2D());	
@@ -190,7 +190,7 @@ public:
 
 					const Spectrum_AD bsdfVal = bsdf->eval(bRec);
 					
-					
+			
 					/* Prevent light leaks due to the use of shading normals */
 					// Removing this check, because it affects autodiff computation.
 					//if (!bsdfVal.isZero() && (!m_strictNormals
@@ -202,7 +202,6 @@ public:
 						Float bsdfPdf = (emitter != NULL && emitter->isOnSurface() && dRec.measure == ESolidAngle)
 								? bsdf->pdf(bRec) : 0;
 
-						
 						/* Weight using the power heuristic */
 						
 						Float weight = miWeight(dRec.pdf, bsdfPdf);
@@ -222,8 +221,7 @@ public:
 			BSDFSamplingRecord bRec(its, rRec.sampler, ERadiance);
 
 			Spectrum_AD bsdfWeight = bsdf->sampleAD(bRec, bsdfPdf, rRec.nextSample2D());
-
-			
+	
 			// Removing this check, because it affects autodiff computation.
 			// if (bsdfWeight.isZero())
 			// 	break;

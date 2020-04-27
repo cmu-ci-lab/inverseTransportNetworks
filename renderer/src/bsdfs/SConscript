@@ -8,8 +8,8 @@ plugins += env.SharedLibrary('homogeneousRoughDielectric', ['homogeneousRoughDie
 
 
 # Materials that act as modifiers
+
 plugins += env.SharedLibrary('mixturebsdfAD', ['mixturebsdfAD.cpp'])
-plugins += env.SharedLibrary('blendbsdfAD', ['blendbsdfAD.cpp'])
 
 
 # Other materials

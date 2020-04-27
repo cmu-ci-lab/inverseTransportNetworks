@@ -29,9 +29,10 @@ class HomogeneousSmoothDiffuse : public BSDF {
 public:
 	HomogeneousSmoothDiffuse(const Properties &props)
 		: BSDF(props) {
-		int idx;
+		int idx = 0;
 		for (int i = 0; i < props.id_AD_Spectrum_AD.size(); i++) {
-			if (props.id_AD_Spectrum_AD[i] == "reflectance") {
+
+			if (props.id_AD_Spectrum_AD[i] == "albedo") {
 				idx = i;
 				break;
 			}

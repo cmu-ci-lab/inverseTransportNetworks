@@ -100,12 +100,16 @@ public:
 	}
 
 	Spectrum_AD eval(const BSDFSamplingRecord &bRec, EMeasure measure) const {
+		std::cout << "start eval" << std::endl;
 		FloatAD weight = m_weight.m_data[Thread::getID()];
-
 		if (bRec.component == -1) {
+			Spectrum_AD test = (1.0-weight) * m_bsdfs[0]->eval(bRec, measure)+
+                                weight * m_bsdfs[1]->eval(bRec, measure);
+			std::cout << "gg" << std::endl;			
 			return
 				(1.0-weight) * m_bsdfs[0]->eval(bRec, measure)+
 				weight * m_bsdfs[1]->eval(bRec, measure);
+
 		} else {
 			/* Pick out an individual component */
 			int idx = m_indices[bRec.component].first;
@@ -119,13 +123,16 @@ public:
 
 
 
-
 	}
 
 
 	Float pdf(const BSDFSamplingRecord &bRec, EMeasure measure) const {
 		Float weight = m_weight.m_data[Thread::getID()].val();
+		Float tt =  m_bsdfs[0]->pdf(bRec, measure) * (1-weight) +
+                                m_bsdfs[1]->pdf(bRec, measure) * weight;
+		std::cout << "start pdf" << std::endl;
 		if (bRec.component == -1) {
+			std::cout << "endpdf" << std::endl;
 			return
 				m_bsdfs[0]->pdf(bRec, measure) * (1-weight) +
 				m_bsdfs[1]->pdf(bRec, measure) * weight;
@@ -278,7 +285,7 @@ public:
 
 
 	Spectrum_AD sampleAD(BSDFSamplingRecord &bRec, Float &pdf, const Point2 &_sample) const {
-
+		std::cout << "start sampleAD" << std::endl;
 		Point2 sample(_sample);
 
 		FloatAD weights[2];
@@ -309,6 +316,7 @@ public:
 
 			bRec.sampledComponent += m_offsets[entry];
 			pdf = t;
+			std::cout << "end" << std::endl;
 			return result/t;
 		} else {
 			/* Pick out an individual component */

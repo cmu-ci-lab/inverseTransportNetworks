@@ -55,17 +55,17 @@ public:
 		}
 
 		m_sampleVisible = props.getBoolean("sampleVisible", true);
-		/*
-		int idx;
+		
+		int idx = 0;
 		for (int i = 0; i < props.id_AD_Spectrum_AD.size(); i++) {
 			if (props.id_AD_Spectrum_AD[i] == "alpha") {
 				idx = i;
 				break;
 			}
 		}
-		*/
 		
-		m_alpha = Spectrum_shared(0.05);//props.m_theta[idx];
+		
+		m_alpha = props.m_theta[idx];
 	}
 
 	HomogeneousRoughDielectric(Stream *stream, InstanceManager *manager)

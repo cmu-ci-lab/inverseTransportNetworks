@@ -97,7 +97,6 @@ public:
 	void configure() {
 		m_usesRayDifferentials = false;
 		size_t componentCount = 0;
-
 		if (m_bsdfs.size() != m_weights.size())
 			Log(EError, "BSDF count mismatch: " SIZE_T_FMT " bsdfs, but specified " SIZE_T_FMT " weights",
 				m_bsdfs.size(), m_bsdfs.size());
@@ -159,7 +158,6 @@ public:
 
 	Spectrum_AD eval(const BSDFSamplingRecord &bRec, EMeasure measure) const {
 		Spectrum_AD result(0.0f);
-
 
 		for (size_t i=0; i<m_bsdfs.size(); ++i)
 			result += m_weights[i] * m_bsdfs[i]->eval(bRec, measure);
