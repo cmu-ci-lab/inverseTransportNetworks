@@ -2,7 +2,7 @@
 
 This repsitory is an implementation of the method described in the following paper: 
 
-["Towards Learning-based Inverse Subsurface Scattering"](http://http://imaging.cs.cmu.edu/inverse_transport_networks/)\
+["Towards Learning-based Inverse Subsurface Scattering"](http://imaging.cs.cmu.edu/inverse_transport_networks/)\
 [Chengqian Che](https://brucect2.github.io/), [Fujun Luan](https://www.cs.cornell.edu/~fujun/), [Shuang Zhao](https://shuangz.com/), [Kavita Bala](http://www.cs.cornell.edu/~kb/), and [Ioannis Gkioulekas](https://www.cs.cmu.edu/~igkioule/)\
 IEEE International Conference on Computational Photography  (ICCP), 2020
 ## Getting Started
