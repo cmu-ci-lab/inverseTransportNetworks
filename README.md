@@ -1,10 +1,11 @@
 # Inverse Transport Networks
 
-This repsitory is an implementation of the method described in the following paper: 
+This repository is an implementation of the method described in the following paper: 
 
-["Towards Learning-based Inverse Subsurface Scattering"](http://imaging.cs.cmu.edu/inverse_transport_networks/)\
+["Towards Learning-based Inverse Subsurface Scattering" [project website]](http://imaging.cs.cmu.edu/inverse_transport_networks/)\
 [Chengqian Che](https://brucect2.github.io/), [Fujun Luan](https://www.cs.cornell.edu/~fujun/), [Shuang Zhao](https://shuangz.com/), [Kavita Bala](http://www.cs.cornell.edu/~kb/), and [Ioannis Gkioulekas](https://www.cs.cmu.edu/~igkioule/)\
 IEEE International Conference on Computational Photography  (ICCP), 2020
+
 ## Getting Started
 
 These instruction constains three parts:
@@ -12,7 +13,7 @@ These instruction constains three parts:
 * Renderer - a Monte-Carlo Differentiable renderer based on [Mitsuba 0.5.0](https://www.mitsuba-renderer.org/releases/current/documentation.pdf)
 * Learning - codes for training and evaluating our networks
 
-### Rendering Scripts
+### Rendering Scripts and Dataset
 
 We used Mitsuba to generate our [dataset](http://http://imaging.cs.cmu.edu/inverse_transport_networks/). Our image file name follows the convention as:
 [shape]_e[sunlight_direction]_d[sigmaT]_a[albedo]_g[g]_q[sampleCount].exr
@@ -59,7 +60,7 @@ The output image contains multiple channels with corrsponding channel names:
 
 ## Learning code
 
-Codes used to train and evaluate our approach is inside folder learning/. Pre-trainined models with 5 different networks can be downloaded here.
+Codes used to train and evaluate our approach is inside folder learning/. Pre-trained models with 5 different networks can be downloaded here.
 
 ## Built With
 
