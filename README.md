@@ -15,7 +15,7 @@ These instruction constains three parts:
 
 ### Rendering Scripts and Dataset
 
-We used Mitsuba to generate our [dataset](https://imaging.cs.cmu.edu/inverse_transport_networks/). Our image file name follows the convention as:
+We used Mitsuba to generate our [dataset](https://imaging.cs.cmu.edu/inverse_transport_networks/assets/dataset.zip). Our image file name follows the convention as:
 [shape]_e[sunlight_direction]_d[sigmaT]_a[albedo]_g[g]_q[sampleCount].exr
 
 For example, one can render the following scenes:
