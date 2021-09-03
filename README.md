@@ -60,7 +60,7 @@ The output image contains multiple channels with corrsponding channel names:
 
 ## Learning code
 
-Codes used to train and evaluate our approach is inside folder learning/. Pre-trained models with 5 different networks can be downloaded [here](https://www.dropbox.com/s/gro2st63x58ytle/ITNNetworks.zip?dl=0).
+Codes used to train and evaluate our approach is inside folder learning/. Pre-trained models with 5 different networks can be downloaded [here](https://www.dropbox.com/s/9w8i2y2u40j3xa1/ITNNetworks.zip?dl=0).
 
 ## Built With
 
