@@ -9,7 +9,7 @@ IEEE International Conference on Computational Photography  (ICCP), 2020
 ## Getting Started
 
 These instruction constains three parts:
-* ITNSceneFiles - scripts and additional files needed for rendering our dataset images and derivatives
+* ITNSceneFiles - scripts and additional file needed for rendering our dataset images and derivatives
 * Renderer - a Monte-Carlo Differentiable renderer based on [Mitsuba 0.5.0](https://www.mitsuba-renderer.org/releases/current/documentation.pdf)
 * Learning - codes for training and evaluating our networks
 
